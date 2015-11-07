@@ -52,13 +52,13 @@ public class PlateNumbers
             }//end of while loop
             numbers = 0;
             
-            if(letloc[2]<25)
+            if(letloc[2]<standardLetters.length())
                 letloc[2]++;
-            else if(letloc[1]<25)
+            else if(letloc[1]<standardLetters.length())
             {
                 letloc[2]=0;
                 letloc[1]++;
-            }else if(letloc[0]<25)
+            }else if(letloc[0]<standardLetters.length())
             {
                 letloc[2]= letloc[1]=0;
                 letloc[0]++;
