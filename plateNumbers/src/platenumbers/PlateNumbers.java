@@ -41,9 +41,10 @@ public class PlateNumbers
         {
             letloc[i] = standardLetters.indexOf(plate.charAt(i));
         }//end of for loop
-        
-        while(letloc.toString()!="ZZZ" && numbers!=9999)
+        String letLocLetters = "";
+        while(letLocLetters!="ZZZ" && numbers!=9999)
         {
+             letLocLetters = ""+ standardLetters.charAt(letloc[0])+ standardLetters.charAt(letloc[1])+ standardLetters.charAt(letloc[2]);
             
             while(numbers<9999)
             {
@@ -52,20 +53,20 @@ public class PlateNumbers
             }//end of while loop
             numbers = 0;
             
-            if(letloc[2]<standardLetters.length())
-                letloc[2]++;
-            else if(letloc[1]<standardLetters.length())
+            if(letloc[2]<standardLetters.length()-1)
+                letloc[2] +=1;
+            else if(letloc[1]<standardLetters.length()-1)
             {
                 letloc[2]=0;
-                letloc[1]++;
-            }else if(letloc[0]<standardLetters.length())
+                letloc[1]+=1;
+            }else if(letloc[2]<standardLetters.length()-1)
             {
                 letloc[2]= letloc[1]=0;
-                letloc[0]++;
+                letloc[0]+=1;
             }//end of if else
             
             showPlate(letloc,numbers);
-            
+            //System.out.print(letLocLetters+"\n");
         }//end of while loop
         
     }//end of function incrementBumber
