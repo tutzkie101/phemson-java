@@ -34,6 +34,8 @@ public class PlateNumbers
     
     private void incrementNumbers(String plate)
     {
+        int maxNum = 10;//try changing this
+        
         int[] letloc = new int[3];
         int numbers = Integer.parseInt(plate.substring(3, 6));
         
@@ -42,15 +44,16 @@ public class PlateNumbers
             letloc[i] = standardLetters.indexOf(plate.charAt(i));
         }//end of for loop
         String letLocLetters = "";
-        while(letLocLetters!="ZZZ" && numbers!=9999)
+        while(!"ZZZ".equals(letLocLetters) && numbers!=maxNum)
         {
              letLocLetters = ""+ standardLetters.charAt(letloc[0])+ standardLetters.charAt(letloc[1])+ standardLetters.charAt(letloc[2]);
             
-            while(numbers<9999)
+            while(numbers<maxNum)
             {
                 numbers++;  
                 showPlate(letloc,numbers);
             }//end of while loop
+            
             numbers = 0;
             
             if(letloc[2]<standardLetters.length()-1)
@@ -59,14 +62,15 @@ public class PlateNumbers
             {
                 letloc[2]=0;
                 letloc[1]+=1;
-            }else if(letloc[2]<standardLetters.length()-1)
+            }else if(letloc[0]<standardLetters.length()-1)
             {
-                letloc[2]= letloc[1]=0;
-                letloc[0]+=1;
+                letloc[2]= 0;
+                letloc[1] = 0;
+                letloc[0]+= 1;
             }//end of if else
             
-            showPlate(letloc,numbers);
-            //System.out.print(letLocLetters+"\n");
+            //showPlate(letloc,numbers);
+            System.out.print(letLocLetters+"-"+numbers+"\n");
         }//end of while loop
         
     }//end of function incrementBumber
